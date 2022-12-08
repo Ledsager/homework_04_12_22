@@ -34,7 +34,7 @@ public class task_01 {
             i+=1;
         }
 
-        try (DataOutputStream fw = new DataOutputStream(new FileOutputStream("result.bin"))) {
+        try (DataOutputStream fw = new DataOutputStream(new FileOutputStream("result.txt"))) {
             
             for ( i = 0; i <= (array.length-2); i+=2) {
                 // System.out.println(i);

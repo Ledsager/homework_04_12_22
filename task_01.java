@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -33,25 +34,23 @@ public class task_01 {
             i+=1;
         }
 
-        try (
-            FileOutputStream fw = new FileOutputStream("result.txt", true)) {
+        try (DataOutputStream fw = new DataOutputStream(new FileOutputStream("result.bin"))) {
+            
             for ( i = 0; i <= (array.length-2); i+=2) {
                 // System.out.println(i);
                 if ((totalAmount[i]!=0)&(totalAmount[i+1]!=0)&(i%2==0)&((i+1)%2!=0)) {
                     System.out.println(totalAmount[i+1]);
                     System.out.println(totalAmount[i]);
                     System.out.println(i);
-                    Double result = Math.pow(totalAmount[i+1],totalAmount[i]);
-                    byte byteValue = result.byteValue();
-                    fw.write(byteValue);
+                    double result = Math.pow(totalAmount[i+1],totalAmount[i]);
+
+                    fw.writeDouble(result);
                     // System.out.println(result);
                 }else {
                     System.out.println(totalAmount[i+1]);
                     System.out.println(totalAmount[i]);
                     System.out.println(i);
-                    String text = "не определенно\n";
-                    byte buf[] = text.getBytes();
-                    fw.write(buf);
+                    fw.writeUTF("не определено");
                 }
 
             }

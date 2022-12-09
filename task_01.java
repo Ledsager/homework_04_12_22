@@ -17,6 +17,7 @@ public class task_01 {
             while ((line = br.readLine()) != null) {
                 listOfStrings.add(line);
             }
+            br.close();
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println();
